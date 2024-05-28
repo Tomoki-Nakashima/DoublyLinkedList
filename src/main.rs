@@ -1,22 +1,26 @@
 use std::fmt;
 
 struct Node<T> {
+    hoge:T
 }
 
 struct DoublyLinkedList<T> {
+    hoge:T
 }
   
 impl<T> DoublyLinkedList<T> {
+  fn new() -> Self {unimplemented!()}
 
-  fn 
   /// Removes the last element from a list and returns it, or None if it is empty.
   /// This operation should compute in O(1) time.
   fn pop_back(&mut self) -> Option<T> {
+    unimplemented!()
   }
 
   /// Removes the first element and returns it, or None if the list is empty.
   /// This operation should compute in O(1) time.
   fn pop_front(&mut self) -> Option<T> {
+    unimplemented!()
   }
   
   /// Appends an element to the back of a list.
@@ -35,16 +39,17 @@ where
     T: fmt::Display,
 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let mut current = self.head.clone();
-        while let Some(node) = current {
-            let n = node.borrow();
-            write!(f, "{}", n.data)?;
-            current = n.next.clone();
-            if current.is_some() {
-                write!(f, "<--->")?;
-            }
-        }
-        Ok(())
+        unimplemented!()
+        // let mut current = self.head.clone();
+        // while let Some(node) = current {
+        //     let n = node.borrow();
+        //     write!(f, "{}", n.data)?;
+        //     current = n.next.clone();
+        //     if current.is_some() {
+        //         write!(f, "<--->")?;
+        //     }
+        // }
+        // Ok(())
     }
 }
 
