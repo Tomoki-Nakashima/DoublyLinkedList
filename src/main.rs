@@ -1,15 +1,20 @@
-use std::fmt;
+use std::{fmt, ptr::null};
 
-struct Node<T> {
-    hoge:T
+#[derive(Clone)]
+struct Node<T: Clone> {
+    data:T
+    
 }
 
-struct DoublyLinkedList<T> {
-    hoge:T
+struct DoublyLinkedList<T: Clone> {
+    head:Option<Node<T>>,
+    tail:Option<Node<T>>
 }
   
-impl<T> DoublyLinkedList<T> {
-  fn new() -> Self {unimplemented!()}
+impl<T: Clone> DoublyLinkedList<T> {
+  fn new() -> Self {
+    DoublyLinkedList{head:None, tail:None}
+  }
 
   /// Removes the last element from a list and returns it, or None if it is empty.
   /// This operation should compute in O(1) time.
@@ -26,21 +31,23 @@ impl<T> DoublyLinkedList<T> {
   /// Appends an element to the back of a list.
   /// This operation should compute in O(1) time.
   fn push_back(&mut self, elt: T) {
+    unimplemented!()
   }
   
   /// Adds an element first in the list.
   /// This operation should compute in O(1) time.
   fn push_front(&mut self, elt: T) {
+    unimplemented!()
   }
 }
   
-impl<T> fmt::Display for DoublyLinkedList<T>
+impl<T: Clone> fmt::Display for DoublyLinkedList<T>
 where
     T: fmt::Display,
 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        unimplemented!()
-        // let mut current = self.head.clone();
+        let mut current = self.head.clone();
+        write!(f, "(");
         // while let Some(node) = current {
         //     let n = node.borrow();
         //     write!(f, "{}", n.data)?;
@@ -49,21 +56,24 @@ where
         //         write!(f, "<--->")?;
         //     }
         // }
-        // Ok(())
+        write!(f, ")");
+        Ok(())
     }
 }
 
 fn main() {
     let mut list = DoublyLinkedList::new();
 
+    println!("{}", list); // ()
+
     list.push_back(1);
     list.push_back(2);
     list.push_back(3);
 
-    println!("{}", list); // 1<--->2<--->3
+    println!("{}", list); // (1<--->2<--->3)
 
     list.push_front(4);
     list.push_front(5);
 
-    println!("{}", list); // 5<--->4<--->1<--->2<--->3
+    println!("{}", list); // (5<--->4<--->1<--->2<--->3)
 }
