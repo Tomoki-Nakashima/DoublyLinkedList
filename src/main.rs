@@ -1,46 +1,48 @@
-use std::{fmt, ptr::null};
+use std::fmt;
 
 #[derive(Clone)]
 struct Node<T: Clone> {
-    data:T
-    
+    data: T,
 }
 
 struct DoublyLinkedList<T: Clone> {
-    head:Option<Node<T>>,
-    tail:Option<Node<T>>
+    head: Option<Node<T>>,
+    tail: Option<Node<T>>,
 }
-  
+
 impl<T: Clone> DoublyLinkedList<T> {
-  fn new() -> Self {
-    DoublyLinkedList{head:None, tail:None}
-  }
+    fn new() -> Self {
+        DoublyLinkedList {
+            head: None,
+            tail: None,
+        }
+    }
 
-  /// Removes the last element from a list and returns it, or None if it is empty.
-  /// This operation should compute in O(1) time.
-  fn pop_back(&mut self) -> Option<T> {
-    unimplemented!()
-  }
+    /// Removes the last element from a list and returns it, or None if it is empty.
+    /// This operation should compute in O(1) time.
+    fn pop_back(&mut self) -> Option<T> {
+        unimplemented!()
+    }
 
-  /// Removes the first element and returns it, or None if the list is empty.
-  /// This operation should compute in O(1) time.
-  fn pop_front(&mut self) -> Option<T> {
-    unimplemented!()
-  }
-  
-  /// Appends an element to the back of a list.
-  /// This operation should compute in O(1) time.
-  fn push_back(&mut self, elt: T) {
-    unimplemented!()
-  }
-  
-  /// Adds an element first in the list.
-  /// This operation should compute in O(1) time.
-  fn push_front(&mut self, elt: T) {
-    unimplemented!()
-  }
+    /// Removes the first element and returns it, or None if the list is empty.
+    /// This operation should compute in O(1) time.
+    fn pop_front(&mut self) -> Option<T> {
+        unimplemented!()
+    }
+
+    /// Appends an element to the back of a list.
+    /// This operation should compute in O(1) time.
+    fn push_back(&mut self, elt: T) {
+        unimplemented!()
+    }
+
+    /// Adds an element first in the list.
+    /// This operation should compute in O(1) time.
+    fn push_front(&mut self, elt: T) {
+        unimplemented!()
+    }
 }
-  
+
 impl<T: Clone> fmt::Display for DoublyLinkedList<T>
 where
     T: fmt::Display,
