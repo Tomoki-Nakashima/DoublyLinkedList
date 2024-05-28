@@ -64,17 +64,32 @@ where
     T: fmt::Display,
 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let mut current = self.head.clone();
-        write!(f, "(");
+        let mut current = &self.head;
+        write!(f, "head: (")?;
         while let Some(node) = current {
             let n = node;
             write!(f, "{}", n.data)?;
-            current = n.next.clone();
+            write!(f, "@{:p}", n)?;
+            current = &n.next;
             if current.is_some() {
                 write!(f, "<--->")?;
             }
         }
-        write!(f, ")");
+        write!(f, ")")?;
+        
+        let mut current = &self.tail;
+        write!(f, "tail: (")?;
+        while let Some(node) = current {
+            let n = node;
+            write!(f, "{}", n.data)?;
+            write!(f, "@{:p}", n)?;
+            current = &n.prev;
+            if current.is_some() {
+                write!(f, "<--->")?;
+            }
+        }
+        write!(f, ")")?;
+
         Ok(())
     }
 }
